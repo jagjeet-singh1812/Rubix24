@@ -1,0 +1,103 @@
+.centerone {
+    font-size: 36px;
+    width: 70vw;
+    margin: auto;
+  }
+  
+  .outer_text_home button {
+    margin-top: 30px;
+  }
+
+  .outer_text_home {
+    background: #fff;
+    text-align: center;
+    min-height: 80vh;
+    max-width: 70vw;
+    margin: auto;
+  }
+  
+  .outer_text_home h1 {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+
+.demo
+{
+  background-image: linear-gradient(30deg,#0400ff,#4ce3f7);
+  background-size: 100% auto;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 17px;
+  padding: .6em 1.5em;
+}
+
+.light
+{
+  color: #67738c;
+}
+.centerone
+{
+  font-size: 36px;
+  margin: auto;
+  width: 70vw;
+}
+
+.main_divv {
+    color: #080a13;
+    max-height: 100vh;
+    margin-top: 10vh;
+  }
+
+
+
+@media (max-width: 500px) {
+    .main_divv {
+      display: none;
+    }
+  }
+
+  /* search box */
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    max-width: 400px; /* Set the maximum width according to your design */
+    margin: 0 auto; /* Center the search bar */
+  }
+  
+  /* Style for the input *//* Style for the search container */
+.search-container {
+    display: flex;
+    max-width: 70vw; /* Set the maximum width according to your design */
+    margin: 0 auto; /* Center the search bar */
+  }
+  
+  /* Style for the input */
+  .search-input {
+    flex: 1; /* Take up remaining space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px; /* Add some space between input and button */
+  }
+  
+  /* Style for the search button */
+    .search-container {
+      display: flex;
+      max-width: 70vw; /* Set the maximum width according to your design */
+      margin: 0 auto; /* Center the search bar */
+    }
+    
+
+    .search_form{
+        margin-top: 9vh;
+    }
+
+    .btn_sections{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
