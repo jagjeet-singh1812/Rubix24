@@ -1,8 +1,9 @@
 import firebase from "firebase";
 
 const config = {
-  databaseURL: "https://vediocallcookies-default-rtdb.firebaseio.com/",
-  apiKey: "AIzaSyAsSf9qA4PL5s-CfSaF24dOvmyCVjTwucg",
+  databaseURL:
+    "https://virtual-classroom-7cb27-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  apiKey: "AIzaSyDrwDXSoSkDAOW8sbAKN3DE5zVmtfXPJrA",
 };
 
 firebase.initializeApp(config);
