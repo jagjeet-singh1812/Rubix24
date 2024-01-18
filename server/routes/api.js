@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Mentor = require('../models/Mentor');
 
 router.get("/getLinkedin", async(req, res)=>{
     try {
@@ -64,6 +65,22 @@ router.get("/getLinkedin", async(req, res)=>{
         res.json({header_data, buttom_data});
     } catch (error) {
         console.log(error);
+        res.status(500).json({error: String(error)});
+    }
+})
+
+router.get("/getAllSkills", async(req, res)=>{
+    try{
+        const skills = await Mentor.find({}).select("skills");
+        // get distinct skills
+        let all_skills = [];
+        skills.forEach((skill)=>{
+            all_skills = all_skills.concat(skill.skills);
+        })
+        all_skills = [...new Set(all_skills)];
+        res.json({skills: all_skills});
+    }catch(err){
+        console.log(err)
         res.status(500).json({error: String(error)});
     }
 })

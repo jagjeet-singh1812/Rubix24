@@ -30,7 +30,7 @@ router.post("/login", async (req, res) => {
         if(mentee.password !== password){
             return res.status(401).json({message: "Incorrect password"});
         }
-        const token = jwt.sign({id: mentee._id}, process.env.SECRET_KEY);
+        const token = jwt.sign({id: mentee._id, type: "mentee"}, process.env.SECRET_KEY);
         return res.status(200).json({token});
     }catch(error){
         res.status(500).json({ error: String(error) });

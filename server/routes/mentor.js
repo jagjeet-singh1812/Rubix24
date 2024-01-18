@@ -70,10 +70,11 @@ router.post(
 router.post('/auth/login', async (req, res) => {
   try{
     const {email, password} = req.body;
-    const mentor = Mentor.find({email: email});
+    const mentor = await Mentor.findOne({email: email});
     if(!mentor){
       return res.status(404).json({msg: "User not found"});
     }
+    // console.log(mentor);
     if(mentor.password !== password){
       return res.status(401).json({msg: "Invalid credentials"});
     }
