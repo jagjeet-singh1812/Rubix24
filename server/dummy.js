@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGO_URI, {
             name: 'Jane Doe',
             email: 'john@example.com',
             password: 'password123',
-            profile_pic: 'path/to/profile/pic.jpg',
+            profile_pic: 'self.png',
             personality_score: 30,
         };
         const mentee = new Mentee(menteeData);

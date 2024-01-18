@@ -22,32 +22,37 @@ router.post('/register', async (req, res) => {
 }
 );
 
-router.post("/login", async (req, res) => {
+router.post("/auth/login", async (req, res) => {
     try{
         const {email, password} = req.body;
-        const mentee = Mentee.find({email: email});
+        // console.log(email, password)
+        const mentee = await Mentee.findOne({email: email});
         if(!mentee){
             return res.status(404).json({message: "Mentee not found"});
         }
+        // console.log(mentee, password, mentee.password === password)
         if(mentee.password !== password){
             return res.status(401).json({message: "Incorrect password"});
         }
         const token = jwt.sign({id: mentee._id, type: "mentee"}, process.env.SECRET_KEY);
         return res.status(200).json({token});
     }catch(error){
+        console.log(error);
         res.status(500).json({ error: String(error) });
     }
 });
 
 router.get('/algo_mentor', async (req, res) => {
     try {
-        const jwt = req.body.jwt;
-        const decoded = jwt.verify(jwt, process.env.SECRET_KEY);
+        const token = req.query.jwt;
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
         const mentee = await Mentee.findById(decoded.id);
         const personality_score = mentee.personality_score;
 
         const mentors = await Mentor.find({}).sort({ personality_score: -1 });
         const result = [];
+
+        console.log(getPersonality(personality_score));
 
         for (let i = 0; i < mentors.length; i++) {
             if(getPersonality(mentors[i].personality_score) === getPersonality(personality_score)){
@@ -56,6 +61,7 @@ router.get('/algo_mentor', async (req, res) => {
         }
         res.status(200).json({ mentors: result });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: error.message });
     }
 });

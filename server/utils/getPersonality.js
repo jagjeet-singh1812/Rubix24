@@ -1,4 +1,4 @@
-const getPersonality = async (score) => {
+const getPersonality = (score) => {
     try {
         if(score>=15 && score<=24)
             return "Strategic and Supportive";

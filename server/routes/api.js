@@ -3,7 +3,7 @@ const Mentor = require('../models/Mentor');
 
 router.get("/getLinkedin", async(req, res)=>{
     try {
-        const profile_id = "omavhad"
+        const profile_id = "abhishek-upadhyay-26397a224"
         // get headline and summary from linkedin
         const profile = await fetch(`https://www.linkedin.com/voyager/api/graphql?includeWebMetadata=true&variables=(vanityName:${profile_id})&queryId=voyagerIdentityDashProfiles.a1941bc56db02d2a36a03dd81313f3c7`, {
             "headers": {
@@ -62,7 +62,30 @@ router.get("/getLinkedin", async(req, res)=>{
         "method": "GET"
         });
         const buttom_data = await footer.json();
-        res.json({header_data, buttom_data});
+
+        const headline = header_data.included[4].headline
+
+        // education 
+        let education = []
+        if(buttom_data.included[11].topComponents[0])
+            buttom_data.included[11].topComponents[1].components.fixedListComponent.components.forEach((component)=>{
+                education.push(component.components.entityComponent.titleV2.text.text)
+            })
+        else if(buttom_data.included[9].topComponents[0])
+            buttom_data.included[9].topComponents[1].components.fixedListComponent.components.forEach((component)=>{
+                education.push(component.components.entityComponent.titleV2.text.text)
+            })
+        else
+            education = "Not Available" 
+
+        let work_experience = []
+        // work_experience.push(buttom_data.included[5].topComponents[1].components.fixedListComponent.components[0].components.entityComponent.subtitle.text)
+        buttom_data.included[5].topComponents[1].components.fixedListComponent.components.forEach((component)=>{
+            work_experience.push(component.components.entityComponent.subtitle.text)
+        })  
+        // console.log(headline, education, work_experience)
+
+        res.json({headline, education, work_experience});
     } catch (error) {
         console.log(error);
         res.status(500).json({error: String(error)});
