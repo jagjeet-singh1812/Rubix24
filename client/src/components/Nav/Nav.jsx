@@ -27,7 +27,7 @@ const Navigation = () => {
   };
   return (
     <>
-      <nav className={`${scrolled ? "sticky-header" : ""}`}>
+      <nav className={`${scrolled ? "sticky-header nav" : "nav"}`}>
         <div className="wrapper">
           <div className="logo">
             <Link to="/">MentorConnect</Link>

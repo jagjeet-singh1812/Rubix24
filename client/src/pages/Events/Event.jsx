@@ -53,8 +53,13 @@ const Event = () => {
   return (
     <div>
       <Sidebar />
-      <div className="p-4 sm:ml-64">
-        <div className="max-w-md mx-auto bg-white p-8 rounded shadow">
+      <div
+        className="p-4 sm:ml-64"
+        // style={{
+        //   backgroundImage: "linear-gradient(-20deg, #ff2846 0%, #6944ff 100%)",
+        // }}
+      >
+        <div className="max-w-md mx-auto bg-white	 p-8 rounded shadow">
           <h1 className="text-2xl font-bold mb-6">Create A Event</h1>
           {/* Form */}
           <form onSubmit={handleSubmit}>

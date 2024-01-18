@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const Mentee = require('../models/Mentee');
+const Mentor = require('../models/Mentor');
 const jwt = require('jsonwebtoken');
+const getPersonality = require('../utils/getPersonality');
 
 router.post('/register', async (req, res) => {
     try {
@@ -34,6 +36,27 @@ router.post("/login", async (req, res) => {
         return res.status(200).json({token});
     }catch(error){
         res.status(500).json({ error: String(error) });
+    }
+});
+
+router.get('/algo_mentor', async (req, res) => {
+    try {
+        const jwt = req.body.jwt;
+        const decoded = jwt.verify(jwt, process.env.SECRET_KEY);
+        const mentee = await Mentee.findById(decoded.id);
+        const personality_score = mentee.personality_score;
+
+        const mentors = await Mentor.find({}).sort({ personality_score: -1 });
+        const result = [];
+
+        for (let i = 0; i < mentors.length; i++) {
+            if(getPersonality(mentors[i].personality_score) === getPersonality(personality_score)){
+                result.push(mentors[i]);
+            }
+        }
+        res.status(200).json({ mentors: result });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
 

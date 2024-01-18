@@ -49,6 +49,7 @@ const mentorSchema = new mongoose.Schema({
   },
   personality_score: {
     type: Number,
+    default:0,
   },
   reviews: {
     type: [String], // Array of review strings

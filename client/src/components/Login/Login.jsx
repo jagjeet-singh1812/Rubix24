@@ -22,8 +22,8 @@ const Login_form = () => {
         email,
         password,
       });
-
       console.log(response);
+      localStorage.setItem("key",response);
     } catch (error) {
       console.error("Authentication failed:", error.message);
     }

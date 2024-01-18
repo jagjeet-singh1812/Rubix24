@@ -7,13 +7,13 @@
 }
 
 
-nav{
+.nav{
   position: fixed;
   z-index: 99;
   width: 100vw;
   background: #fbfbfd;
   top:0;
-}
+} 
 nav .wrapper{
   position: relative;
   max-width: 100vw;

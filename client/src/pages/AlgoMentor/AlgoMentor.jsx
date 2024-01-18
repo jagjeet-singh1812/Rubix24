@@ -1,90 +1,25 @@
 import { Drawer } from "@material-tailwind/react";
-import {useEffect, useState} from "react";
-import React from "react";
-import {useNavigate} from "react-router-dom"
 import axios from "axios";
-import backend from "../../Api"
-import Slider from "@mui/material/Slider";
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
-import Select from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
+import React, { useEffect, useState } from "react";
+import backend from "../../Api";
 
 const FindMentor = () => {
-  const navigate = useNavigate();
+  const [mentor, setMentor] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [mentors, setMentors] = useState([]);
-  const [skills, setSkills] = useState([]); 
-  const [selectedSkills, setSelectedSkills] = useState([]);
-  const [priceRange, setPriceRange] = useState([0, 1000]);
-  const title = ["Academic", "Tech", "Career"];
-  const [job_title, setJob_title] = useState([]);
-  const [filters, setFilters] = useState({});
-
-
-  const handleSkillChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setSelectedSkills(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
-  };
-
-   const handleJobTitleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setJob_title(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
-  };
-
-  // Function to handle price range change
-  const handlePriceRangeChange = (event, newRange) => {
-    setPriceRange(newRange);
-  };
-
-
-  const handleModifyFilters = () => {
-    const query = {};
-    if (selectedSkills.length > 0) query.skills = selectedSkills.join(',');
-    if (priceRange[0] !== 0 || priceRange[1] !== 1000) {
-      query.lite_price_min = priceRange[0];
-      query.lite_price_max = priceRange[1];
-    }
-    if (job_title.length > 0) query.job_title = job_title.join(',');
-    setFilters(query);
-  };
   useEffect(() => {
-    const fetchMentors = async () => {
-      try {
-        console.log(filters);
-        const url = `${backend}/mentor/getMentors?${new URLSearchParams(filters)}`;
-        const { data } = await axios.get(url);
-        console.log(data);
-        setMentors(data);
-      } catch (error) {
+    const fetchMentor = async () => {
+      try{
+        const res = await axios.get(`${backend}/mentor/getMentor`, {jwt: localStorage.getItem("jwt")});
+        setMentor(res.data.mentors);
+        setLoading(false);
+      }catch(error){
         console.log(error);
       }
     }
-    const fetchSkills = async () => {
-      try {
-        const { data } = await axios.get(`${backend}/common/getAllSkills`);
-        console.log(data);
-        setSkills(data.skills);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchSkills();
-    fetchMentors();
-  }, [filters]);
+    fetchMentor();
+  }, []);
+
 
   return (
     <div>
@@ -92,102 +27,34 @@ const FindMentor = () => {
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
         <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            Search Mentors
+            Personalized Mentors
           </h2>
           <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
           Discover your ideal mentor from our curated selection of the filter and excel in your feild.
           </p>
         </div>
-
-        <div style={{display: "flex", flexDirection: "row", gap: "20px"}}>
-        {/* Skill filter dropdown */}
-        <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Skills</InputLabel>
-        <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          multiple
-          value={selectedSkills}
-          onChange={handleSkillChange}
-          input={<OutlinedInput label="Tag" />}
-          renderValue={(selected) => selected.join(', ')}
-        >
-          {skills.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={selectedSkills.indexOf(name) > -1} />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      {/* Job title dropdown */}
-        <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Job Title</InputLabel>
-        <Select
-          labelId="demo-multiple-checkbox-label"
-          id="demo-multiple-checkbox"
-          multiple
-          value={job_title}
-          onChange={handleJobTitleChange}
-          input={<OutlinedInput label="Tag" />}
-          renderValue={(selected) => selected.join(', ')}
-        >
-          {title.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={job_title.indexOf(name) > -1} />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-          {/* Price range slider */}
-          <div className="w-[250px]">
-            <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2">
-              Price Range
-            </label>
-            <Slider
-              getAriaLabel={() => 'Temperature range'}
-              value={priceRange}
-              onChange={handlePriceRangeChange}
-              valueLabelDisplay="auto"
-            />
-          </div>
-          {/* adding apply filter button */}
-          <button
-            type="button"
-            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
-            onClick={handleModifyFilters}
-          >
-            Apply Filters
-          </button>
-        </div>
-
-
-
       <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-       {mentors.map((mentor) => (
-        <div key={mentor._id} className="items-center bg-gray-50 rounded-lg shadow-md sm:flex dark:bg-gray-800 dark:border-gray-700 transition duration-300 hover:border-transparent hover:shadow-lg ">
+      <div className="items-center bg-gray-50 rounded-lg shadow-md sm:flex dark:bg-gray-800 dark:border-gray-700 transition duration-300 hover:border-transparent hover:shadow-lg ">
               <a href="#">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
-                  src={`${backend}/${mentor.coverImage}`}
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
                   alt="Bonnie Avatar"
                 />
               </a>
               <div className="p-5">
                 <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  <a href="#">{mentor.name}</a>
+                  <a href="#">Bonnie Green</a>
                 </h3>
                 <span className="text-gray-500 dark:text-gray-400">
-                  {mentor.job_title}
+                  CEO & Web Developer
                 </span>
                 <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-                  {mentor.bio}
+                  Bonnie drives the technical strategy of the flowbite platform
+                  and brand.
                 </p>
                 <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-                  {mentor.skills.join(", ")}
+                  skills
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
                   <li>
@@ -257,14 +124,12 @@ const FindMentor = () => {
                 type="button"
                 className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
               >
-                Enroll now&nbsp;@{mentor.lite_price}
-
+                Enroll Now&nbsp;@1000
               </button>
                   </li>
                 </ul>
               </div>
-            </div>
-      ))}
+            </div> 
       </div>  
   </div>
 </section>

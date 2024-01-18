@@ -99,15 +99,17 @@ router.get("/getMentors", async (req, res) => {
   try {
     const { skills, lite_price_min, lite_price_max, job_title, is_verified } = req.query;
 
+    // console.log(req.query);
+
     // Building the filter object based on provided query parameters
     const filter = {};
-    if (skills) filter.skills = { $in: skills.split(',') };
+    if (skills && skills.length>0) filter.skills = { $in: skills.split(',') };
     if (lite_price_min !== undefined) filter.lite_price = { $gte: parseInt(lite_price_min) };
     if (lite_price_max !== undefined) {
       if (!filter.lite_price) filter.lite_price = {};
       filter.lite_price.$lte = parseInt(lite_price_max);
     }
-    if (job_title) filter.job_title = job_title;
+    if (job_title && job_title.length>0) filter.job_title = { $in: job_title.split(',') };
     if (is_verified !== undefined) filter.is_verified = Boolean(is_verified);
 
     // Query the mentors collection with the constructed filter
