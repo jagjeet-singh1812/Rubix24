@@ -38,7 +38,7 @@ function UserNameForm() {
         DisplayProfilePic: event.target.files[0],
       }));
 
-      event.target.files[0] && console.log(formData.DisplayProfilePic);
+      // event.target.files[0] && console.log(formData.DisplayProfilePic);
 
       event.target.files[0]
         ? setValidation((prevData) => ({
@@ -94,6 +94,7 @@ function UserNameForm() {
       <span className={classes.container}>
         <p>Profile Pic</p>
         <input
+          name="DisplayProfilePic"
           className="inputField"
           type="file"
           onChange={displayProfilePicHandler}

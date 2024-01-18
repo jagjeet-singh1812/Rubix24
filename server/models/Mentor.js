@@ -7,27 +7,27 @@ const mentorSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
-    unique: true,
+    // required: true,
+    // unique: true,
   },
   password: {
     type: String,
-    required: true,
+    // required: true,
   },
   profile_pic: {
     filename: {
       type: String,
-      required: true,
+      required: false,
     },
     path: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   work_email: {
     type: String,
-    required: true,
-    unique:true,
+    // required: true,
+    // unique:true,
   },
   is_verified: {
     type: Boolean,
@@ -36,11 +36,11 @@ const mentorSchema = new mongoose.Schema({
   job_title: {
     type: String,
     enum: ["Academic", "Tech", "Career"],
-    required: true,
+    // required: true,
   },
   skills: {
     type: [String], // Array of skills
-    required: true
+    // required: true
   },
   bio: {
     type: String,

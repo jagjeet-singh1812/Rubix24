@@ -46,9 +46,13 @@ function LandingFormPage() {
         {page === 4 && <LastForm />}
         {page === 5 && <CongratzPage />}
       </div>
-      <button className="button" onClick={pageSet}>
+      {/* <button className="button" onClick={pageSet}>
         {page === numOfPages-1 ? `Submit` : (page===numOfPages)?`Hooray`:`Next`}
-      </button>
+      </button> */}
+      {page <= numOfPages - 1 && (
+        <button className="button" onClick={pageSet}> Next
+        </button>
+      )}
     </div>
   );
 }
