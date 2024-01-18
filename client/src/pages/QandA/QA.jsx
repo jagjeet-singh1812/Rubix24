@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./QA.css";
 import axios from "axios";
-
+import URI from "../../URI";
 const QA = () => {
   const [scores, setScores] = useState({
     q1: 0,
@@ -36,18 +36,15 @@ const QA = () => {
 
   const handleSubmit =async (event) => {
     event.preventDefault();
-
+    console.log("calling ")
     try{
     const totalScore = calculateTotalScore();
-    // alert("Form successfully submitted")
-
+    // alert("Form successfully submitted"
     const formdata=new FormData();
     formdata.append("personality_score",totalScore);
-
-    // await axios.put(`/api/mentor-persanality/${id}`,formdata)   //id = mentor_id
-    
+    const data=await axios.put(`${URI}/doit/api/mentor-persanality/65a971a591f6ae49b06bbd59`,formdata)   //id = mentor_id
+    console.log(data.response);
     console.log(formdata.get("personality_score"));
-
 }
 catch(error){
     console.log(error);

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const {CompanyEmails} =require("../company_email.json");
 const nodemailer = require("nodemailer");
 const Mentor = require("../models/Mentor");
 
@@ -29,6 +29,7 @@ const sendMailforVerification = async (name, email, id) => {
 router.post("/api/verify", async (req, res) => {
   try {
     const id = req.headers.authorization;
+    console.log(id);
     const mentor_obj = await Mentor.findById(id);
     const { name, work_email, is_verified } = mentor_obj;
     console.log(mentor_obj);
@@ -39,11 +40,15 @@ router.post("/api/verify", async (req, res) => {
 
     if (is_verified) {
       return res.status(202).send({
-        mag: "You are verified",
+        msg: "You are verified",
       });
     }
 
-    //check work_email
+  //   //check work_email
+  //   const emailDomain = work_email.split("@")[1];
+  //  if (!CompanyEmails.includes(emailDomain)) {
+  //    return res.status(206).send({ msg: "Invalid company email" });
+  //  }
 
     sendMailforVerification(name, work_email, id);
 
@@ -65,5 +70,7 @@ router.put("/api/verify-email/:id", async (req, res) => {
     });
   }
 });
+
+
 
 module.exports = router;

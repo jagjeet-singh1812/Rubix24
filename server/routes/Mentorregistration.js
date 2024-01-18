@@ -72,9 +72,8 @@ router.post(
 router.put("/api/mentor-personality/:id", async (req, res) => {
   try {
     const { id } = req.params;
+    console.log(id);
     const { personality_score } = req.body;
-
-    // Check if id is a valid ObjectId (assuming you're using ObjectId as _id)
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send({ msg: "Invalid mentor ID" });
     }

@@ -12,19 +12,20 @@ const Terms = () => {
         {},
         {
           headers: {
-            //65a92995d0e5dcc41012a0a
-            Authorization: "",
+            //
+            Authorization: "65a971a591f6ae49b06bbd59",
             "Content-Type": "application/json",
           },
         }
       );
-
       if (response?.status === 200) {
         alert("Email has been sent .");
       } else if (response?.status === 202) {
-        alert("Workig Email is already verified");
+        alert("Working Email is already verified");
+      } else if (response?.status === 206) {
+        alert("Working Email is Invalid");
       } else if (response?.status === 205) {
-        alert("Workig Email is not provided");
+        alert("Working Email is not provided");
       } else {
         alert("Unexpected error");
       }

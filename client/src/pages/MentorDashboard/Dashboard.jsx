@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getMentor = async () => {
-      const id = "65a943781824257f9ec7b9bd"; // this should be from local storage
+      const id = "65a971a591f6ae49b06bbd59"; // this should be from local storage
       try {
         const res = await axios.get(`${URI}/api/getSingleMentor/${id}`);
         if (res?.status === 200) {
@@ -24,6 +24,7 @@ const Dashboard = () => {
   return (
     <>
       <Sidebar />
+      <div className="temp"></div>
       <div className="p-4 sm:ml-64">
         {obj && (
           <div>

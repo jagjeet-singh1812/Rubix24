@@ -1,9 +1,24 @@
-{ 
-    "email":[
-
-        {
-            
-        }
-
+{
+    "CompanyEmails": [
+      "@abcwidgets.com",
+      "@xyzsolutions.net",
+      "@innovateco.org",
+      "@techworldsolutions.com",
+      "@globaltechcorp.net",
+      "@innovationindustries.org",
+      "@stellarproducts.com",
+      "@innovatechsystems.net",
+      "@futuretechenterprises.org",
+      "@quantumtechsolutions.com",
+      "@nexgenindustries.net",
+      "@novatechglobal.org",
+      "@unlimitedproducts.com",
+      "@visionarytech.net",
+      "@protechsolutions.org",
+      "@megacorpinc.com",
+      "@techrevolution.net",
+      "@infinitysolutions.org",
+      "@modernindustries.com",
+      "@futuretechsystems.net"
     ]
-}
+  }
