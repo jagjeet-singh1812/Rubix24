@@ -4,13 +4,13 @@ import React, { useEffect, useState } from "react";
 import backend from "../../Api";
 
 const FindMentor = () => {
-  const [mentor, setMentor] = useState([]);
+  const [mentors, setMentor] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMentor = async () => {
       try{
-        const res = await axios.get(`${backend}/mentor/getMentor`, {jwt: localStorage.getItem("jwt")});
+        const res = await axios.get(`${backend}/mentee/algo_mentor?jwt=${localStorage.getItem("key")}`);
         setMentor(res.data.mentors);
         setLoading(false);
       }catch(error){
@@ -34,27 +34,27 @@ const FindMentor = () => {
           </p>
         </div>
       <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
-      <div className="items-center bg-gray-50 rounded-lg shadow-md sm:flex dark:bg-gray-800 dark:border-gray-700 transition duration-300 hover:border-transparent hover:shadow-lg ">
+        {mentors.map((mentor) => (
+        <div key={mentor._id} className="items-center bg-gray-50 rounded-lg shadow-md sm:flex dark:bg-gray-800 dark:border-gray-700 transition duration-300 hover:border-transparent hover:shadow-lg ">
               <a href="#">
                 <img
                   className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+                  src={`${backend}/${mentor.coverImage}`}
                   alt="Bonnie Avatar"
                 />
               </a>
               <div className="p-5">
                 <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  <a href="#">Bonnie Green</a>
+                  <a href="#">{mentor.name}</a>
                 </h3>
                 <span className="text-gray-500 dark:text-gray-400">
-                  CEO & Web Developer
+                  {mentor.job_title}
                 </span>
                 <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-                  Bonnie drives the technical strategy of the flowbite platform
-                  and brand.
+                  {mentor.bio}
                 </p>
                 <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-                  skills
+                  {mentor.skills.join(", ")}
                 </p>
                 <ul className="flex space-x-4 sm:mt-0">
                   <li>
@@ -124,12 +124,14 @@ const FindMentor = () => {
                 type="button"
                 className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
               >
-                Enroll Now&nbsp;@1000
+                Enroll now&nbsp;@{mentor.lite_price}
+
               </button>
                   </li>
                 </ul>
               </div>
-            </div> 
+            </div>
+      ))}
       </div>  
   </div>
 </section>

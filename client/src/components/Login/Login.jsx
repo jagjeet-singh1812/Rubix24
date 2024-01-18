@@ -23,7 +23,7 @@ const Login_form = () => {
         password,
       });
       console.log(response);
-      localStorage.setItem("key",response);
+      localStorage.setItem("key",response.data.token);
     } catch (error) {
       console.error("Authentication failed:", error.message);
     }
@@ -31,12 +31,13 @@ const Login_form = () => {
 else{
     
     try {
-        const response = await axios.post(`${backend}/mentor/auth/login`, {
+        const response = await axios.post(`${backend}/mentee/auth/login`, {
           email,
           password,
         });
   
         console.log(response);
+        localStorage.setItem("key",response.data.token);
       } catch (error) {
         console.error("Authentication failed:", error.message);
       }
