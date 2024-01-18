@@ -54,6 +54,7 @@ const FindMentor = () => {
           </p>
         </div>
 
+        <div>
         {/* Skill filter dropdown */}
           <div className="mb-4">
             <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2">
@@ -73,7 +74,10 @@ const FindMentor = () => {
           </div>
 
           {/* Price range slider */}
-          <div className="w-16">
+          <div className="w-[100px]">
+            <label className="block text-gray-700 dark:text-white text-sm font-bold mb-2">
+              Price Range
+            </label>
             <Slider
               getAriaLabel={() => 'Temperature range'}
               value={priceRange}
@@ -81,6 +85,8 @@ const FindMentor = () => {
               valueLabelDisplay="auto"
             />
           </div>
+        </div>
+
 
       <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
        {mentors.map((mentor) => (
