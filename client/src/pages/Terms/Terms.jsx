@@ -12,7 +12,8 @@ const Terms = () => {
         {},
         {
           headers: {
-            Authorization: "65a92995d0e5dcc41012a0a8",
+            //65a92995d0e5dcc41012a0a
+            Authorization: "",
             "Content-Type": "application/json",
           },
         }
