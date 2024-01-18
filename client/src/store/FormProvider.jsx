@@ -15,6 +15,7 @@ function FormProvider({ children }) {
     standard_price: "",
     lite_price: "",
     skills: [],
+    work_email: ""
   };
 
   const defaultValidationState = {
@@ -30,6 +31,7 @@ function FormProvider({ children }) {
     standard_price: false,
     lite_price: false,
     skills:false,
+    work_email: false
   };
 
   const [page, setPage] = useState(1);

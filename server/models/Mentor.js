@@ -14,15 +14,8 @@ const mentorSchema = new mongoose.Schema({
     type: String,
     // required: true,
   },
-  profile_pic: {
-    filename: {
-      type: String,
-      required: false,
-    },
-    path: {
-      type: String,
-      required: false,
-    },
+  coverImage: {
+    type: String,
   },
   work_email: {
     type: String,
@@ -45,7 +38,7 @@ const mentorSchema = new mongoose.Schema({
   bio: {
     type: String,
   },
-  linkdin_url: {
+  linkedin_url: {
     type: String,
   },
   twitter_url: {
