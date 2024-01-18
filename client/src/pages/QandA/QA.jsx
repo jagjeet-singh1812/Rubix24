@@ -6,8 +6,8 @@ const QA = () => {
     <div>
       <Sidebar />
       <div className="p-4 sm:ml-64">
-        <main className="container">
-          <section className="quiz-container">
+        <main className="containerx">
+          <section className="quiz-containerx">
             <header className="quiz-header">
               <h2>Quiz</h2>
               <div className="quiz-results">

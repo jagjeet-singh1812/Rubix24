@@ -7,7 +7,7 @@ const Dashboard = () => {
       <Sidebar />
       <div className="p-4 sm:ml-64">
         <div>
-          <div className="wrapper">
+          <div className="wrapperx">
             <div className="profile-card js-profile-card">
               <div className="profile-card__img">
                 <img

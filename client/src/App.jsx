@@ -6,7 +6,6 @@ import MentorPage from "./pages/MentorPage";
 import QA from "./pages/QandA/QA";
 
 import Navigation from "./components/Nav/Nav";
-import HomeScreen from "./pages/Home";
 import Home from "./pages/Home/Home";
 
 import Room from "./pages/Room";
@@ -31,7 +30,7 @@ function App() {
         <Route path="/video" element={<HomeScreen />} />
         <Route path="/room" element={<Room />} />
         <Route path="/mentorform" element={<MentorPage />} />
-        <Route path="/sidebar" element={<Sidebar />} />
+        {/* <Route path="/sidebar" element={<Sidebar />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/q&a" element={<QA />} />
         <Route path="/terms" element={<Terms />} />

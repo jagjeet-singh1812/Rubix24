@@ -6,7 +6,7 @@
   --color-yelow: #ffda62;
   --font-sans-serif: "Source Sans Pro", sans-serif;
 }
-.container {
+.containerx {
   background-color: var(--color-yelow);
 }
 h2 {
@@ -19,7 +19,7 @@ strong {
   font-weight: 600;
 }
 /* Quiz -------------------------*/
-.quiz-container {
+.quiz-containerx {
   background: var(--color-white);
   width: 100%;
   padding: 3rem 4rem;
