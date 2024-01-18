@@ -16,6 +16,9 @@ import Terms from "./pages/Terms/Terms";
 import Event from "./pages/Events/Event";
 
 import FindMentor from "./pages/FindMentor/FindMentor";
+import Contactus from "./components/Login/Login";
+import Login from "./components/Login/Login";
+import Login_form from "./components/Login/Login";
 // import Login from "./components/Login/Login";
 
 
@@ -26,7 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/find_mentor" element={<FindMentor/>}></Route>
-        {/* <Route path="/Login" element={<Login/>}></Route> */}
+        <Route path="/Login" element={<Login_form/>}></Route>
         <Route path="/video" element={<HomeScreen />} />
         <Route path="/room" element={<Room />} />
         <Route path="/mentorform" element={<MentorPage />} />
