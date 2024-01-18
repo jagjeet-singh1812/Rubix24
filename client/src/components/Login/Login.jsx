@@ -13,10 +13,10 @@ const Login_form = () => {
     setActiveTab(tab);
   };
   const handleSubmit = async (e) => {
-    e.preventDefault();
-console.log(email);
-console.log(password);
-console.log(backend);
+
+      e.preventDefault();
+    if(activeTab=="mentor"){
+    
     try {
       const response = await axios.post(`${backend}/mentor/auth/login`, {
         email,
@@ -27,52 +27,61 @@ console.log(backend);
     } catch (error) {
       console.error("Authentication failed:", error.message);
     }
+}
+else{
+    
+    try {
+        const response = await axios.post(`${backend}/mentor/auth/login`, {
+          email,
+          password,
+        });
+  
+        console.log(response);
+      } catch (error) {
+        console.error("Authentication failed:", error.message);
+      }
+}
   };
 
   return (
     <div>
-      <div className="flex space-x-4">
-        <button
-          className={`text-sm font-medium ${
-            activeTab === "mentor"
-              ? "text-primary-600"
-              : "text-gray-500 dark:text-gray-300"
-          }`}
-          onClick={() => handleTabChange("mentor")}
-        >
-          Mentor
-        </button>
-        <button
-          className={`text-sm font-medium ${
-            activeTab != "mentee"
-              ? "text-primary-600"
-              : "text-gray-900 bg-primary border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-          }`}
-          onClick={() => handleTabChange("mentee")}
-        >
-          Mentee
-        </button>
-      </div>
-
-      <section className="bg-gray-50 dark:bg-gray-900">
+      <section className="bg-white dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <a
             href="#"
             className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
           >
-            <img
-              className="w-8 h-8 mr-2"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-              alt="logo"
-            />
+            <img className="w-8 h-8 mr-2" src={Logo} alt="logo" />
             Flowbite
           </a>
+
+          <div className="flex space-x-4">
+            <button
+              className={`text-white  hover:bg-blue-800 focus:ring-4 ${
+                activeTab != "mentee" ? "bg-blue-600 border-2 border-blue-500" : "bg-blue-200"
+              } focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 focus:outline-none`}
+              onClick={() => handleTabChange("mentor")}
+            >
+              Mentor
+            </button>
+            <button
+            className={`text-white  hover:bg-blue-800 focus:ring-4 ${
+                activeTab === "mentee" ? " bg-blue-600 border-2 border-blue-500" : "bg-blue-200"
+              } focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 focus:outline-none`}
+              onClick={() => handleTabChange("mentee")}
+            >
+              Mentee
+            </button>
+          </div>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                Sign in to your account
+                Log in to your account
               </h1>
-              <form className="space-y-4 md:space-y-6" onSubmit={(e)=>handleSubmit(e)}>
+              <form
+                className="space-y-4 md:space-y-6"
+                onSubmit={(e) => handleSubmit(e)}
+              >
                 <div>
                   <label
                     for="email"

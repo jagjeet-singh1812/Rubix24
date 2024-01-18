@@ -19,6 +19,7 @@ import FindMentor from "./pages/FindMentor/FindMentor";
 import Contactus from "./components/Login/Login";
 import Login from "./components/Login/Login";
 import Login_form from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
 // import Login from "./components/Login/Login";
 
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/video" element={<HomeScreen />} />
         <Route path="/room" element={<Room />} />
         <Route path="/mentorform" element={<MentorPage />} />
+        <Route path="/Profile" element={<Profile/>} />
         {/* <Route path="/sidebar" element={<Sidebar />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/q&a" element={<QA />} />
