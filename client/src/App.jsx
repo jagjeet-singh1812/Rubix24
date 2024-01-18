@@ -1,7 +1,7 @@
 
 import Sidebar from "./components/Sidebar/Sidebar";
 import HomeScreen from "./pages/Home";
-import Dashboard from "./pages/MentorDashboard/Dashboard";
+import Profile from "./pages/MentorDashboard/Dashboard";
 import MentorPage from "./pages/MentorPage";
 import QA from "./pages/QandA/QA";
 
@@ -14,6 +14,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Terms from "./pages/Terms/Terms";
 import Event from "./pages/Events/Event";
+import EmailVerify from "./pages/Verification/EmailVerify";
+import AnalyDash from "./pages/AnalyDash/AnalyDash";
 
 import FindMentor from "./pages/FindMentor/FindMentor";
 import Contactus from "./components/Login/Login";
@@ -34,12 +36,16 @@ function App() {
         <Route path="/video" element={<HomeScreen />} />
         <Route path="/room" element={<Room />} />
         <Route path="/mentorform" element={<MentorPage />} />
+        <Route path="/sidebar" element={<Sidebar />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/Profile" element={<Profile/>} />
         {/* <Route path="/sidebar" element={<Sidebar />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/q&a" element={<QA />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/events" element={<Event />} />
+        <Route path="/verifyforMentor/:id" element={<EmailVerify />} />
+        <Route path="/dash" element={<AnalyDash />} />
       </Routes>
       <Footer/>
     </BrowserRouter>

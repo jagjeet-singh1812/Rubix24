@@ -12,6 +12,9 @@ app.use(cors());
 app.use("/mentor", require('./routes/mentor'));
 app.use("/mentee", require('./routes/mentee'));
 app.use("/common", require("./routes/api"));
+app.use(require('./routes/Mentorregistration'))
+app.use(require('./routes/Eventroutes'))
+app.use(require('./routes/Verify'))
 
 const port = process.env.PORT || 8090;
 
