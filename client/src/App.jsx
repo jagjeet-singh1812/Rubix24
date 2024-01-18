@@ -32,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/find_mentor" element={<FindMentor/>}></Route>
+        <Route path="/algo_mentor" element={<AlgoMentor/>}></Route>
         <Route path="/Login" element={<Login_form/>}></Route>
         <Route path="/video" element={<HomeScreen />} />
         <Route path="/room" element={<Room />} />
