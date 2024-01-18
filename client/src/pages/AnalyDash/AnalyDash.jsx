@@ -44,7 +44,10 @@ const AnalyDash = () => {
                 <i className="uil uil-clock-three" />
                 <span className="text">Recent Activity</span>
               </div>
-              <div className="activity-data"></div>
+              <div className="activity-data">
+               <iframe style={{background: '#FFFFFF', border: 'none', borderRadius: 2, boxShadow: '0 2px 10px 0 rgba(70, 76, 79, .2)'}} width={640} height={480} src="https://charts.mongodb.com/charts-surajdb-igsjh/embed/charts?id=65a98564-3284-40b2-864b-6e17ec428667&maxDataAge=60&theme=light&autoRefresh=true" />
+
+              </div>
             </div>
           </div>
         </section>
