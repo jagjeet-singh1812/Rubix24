@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const router = express.Router();
 const Mentor = require("../models/Mentor");
+const jwt = require("jsonwebtoken");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -65,5 +66,23 @@ router.post(
     }
   }
 );
+
+router.post('/auth/login', async (req, res) => {
+  try{
+    const {email, password} = req.body;
+    const mentor = Mentor.find({email: email});
+    if(!mentor){
+      return res.status(404).json({msg: "User not found"});
+    }
+    if(mentor.password !== password){
+      return res.status(401).json({msg: "Invalid credentials"});
+    }
+    const token = jwt.sign({id: mentor._id, type: "mentor"}, process.env.SECRET_KEY);
+    return res.status(200).json({token});
+  }catch(err){
+    console.log(err);
+    res.status(500).json({error: String(err)});
+  }
+})
 
 module.exports = router;

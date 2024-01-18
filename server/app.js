@@ -9,7 +9,8 @@ app.use("/uploads", express.static("./uploads"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use(require('./routes/mentor'))
+app.use("/mentor", require('./routes/mentor'));
+app.use("/mentee", require('./routes/mentee'));
 app.use("/api/common", require("./routes/api"));
 
 const port = process.env.PORT || 8090;
