@@ -10,7 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(require('./routes/Mentorregistration'))
-
+app.use(require('./routes/Eventroutes'))
+app.use(require('./routes/Verify'))
 
 const port = process.env.PORT || 8090;
 

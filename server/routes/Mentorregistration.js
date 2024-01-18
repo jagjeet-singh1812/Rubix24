@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const router = express.Router();
 const Mentor = require("../models/Mentor");
+const mongoose = require("mongoose");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -57,7 +58,9 @@ router.post(
       });
 
       await newMentor.save();
-      return res.status(201).json({ msg: "Registration successful",id: newMentor._id});
+      return res
+        .status(201)
+        .json({ msg: "Registration successful", id: newMentor._id });
     } catch (error) {
       res.send({
         msg: "Internal error",
@@ -65,5 +68,36 @@ router.post(
     }
   }
 );
+
+router.put("/api/mentor-personality/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { personality_score } = req.body;
+
+    // Check if id is a valid ObjectId (assuming you're using ObjectId as _id)
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).send({ msg: "Invalid mentor ID" });
+    }
+
+    // Find the mentor by id and update the personality_score
+    const updatedMentor = await Mentor.findByIdAndUpdate(
+      id,
+      { $set: { personality_score } },
+      { new: true } // This option returns the modified document
+    );
+
+    if (!updatedMentor) {
+      return res.status(404).send({ msg: "Mentor not found" });
+    }
+
+    res.status(200).json({
+      msg: "Personality score updated successfully",
+      mentor: updatedMentor,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ msg: "Internal Server Error" });
+  }
+});
 
 module.exports = router;

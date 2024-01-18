@@ -1,7 +1,37 @@
 import React from "react";
 import "./Terms.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import URI from "../../URI";
+import axios from "axios";
+
 const Terms = () => {
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post(
+        `${URI}/api/verify`,
+        {},
+        {
+          headers: {
+            Authorization: "65a92995d0e5dcc41012a0a8",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response?.status === 200) {
+        alert("Email has been sent .");
+      } else if (response?.status === 202) {
+        alert("Workig Email is already verified");
+      } else if (response?.status === 205) {
+        alert("Workig Email is not provided");
+      } else {
+        alert("Unexpected error");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div>
       <Sidebar />
@@ -68,9 +98,9 @@ const Terms = () => {
                   By clicking 'Accept' you are agreeing to our terms and
                   conditions.
                 </small>
-                <a className="button" href="#">
+                <button onClick={handleSubmit} className="button">
                   Accept
-                </a>
+                </button>
               </div>
             </section>
           </main>

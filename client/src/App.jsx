@@ -7,6 +7,7 @@ import Room from "./pages/Room";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Terms from "./pages/Terms/Terms";
 import Event from "./pages/Events/Event";
+import EmailVerify from "./pages/Verification/EmailVerify";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/q&a" element={<QA />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/events" element={<Event />} />
+        <Route path="/verifyforMentor/:id" element={<EmailVerify />} />
       </Routes>
     </BrowserRouter>
   );
