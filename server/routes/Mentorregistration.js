@@ -100,4 +100,38 @@ router.put("/api/mentor-personality/:id", async (req, res) => {
   }
 });
 
+router.get("/api/getSingleMentor/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const mentor = await Mentor.findById(id);
+
+    if (!mentor) {
+      return res.status(205).send({
+        msg: "Mentor is not registered",
+      });
+    }
+    res.status(200).send({
+      data: mentor,
+    });
+  } catch (error) {
+    res.status(500).send({
+      msg: "Internal Server Error",
+      error,
+    });
+  }
+});
+
+router.get("/api/all", async (req, res) => {
+  try {
+    const mentor = await Mentor.find({});
+    return res.status(200).send({
+      data: mentor,
+    });
+  } catch (error) {
+    res.status(500).send({
+      msg: "Internal Server Error",
+      error,
+    });
+  }
+});
 module.exports = router;
