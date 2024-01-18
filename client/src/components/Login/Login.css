@@ -1,0 +1,243 @@
+/* Add custom colors */
+:root {
+    --highlight-color: #ffffff; /* Example form highlighting color */
+  }
+  
+  .whole_contactus {
+    display: flex;
+    min-height: 70vh;
+    /* background: radial-gradient(100.18% 488.14% at 50% 50%, rgba(77, 235, 212, 0) 23.23%, rgba(77, 235, 212, 0.365) 85.73%); */
+  }
+  
+  .left_contactus {
+    width: 50%;
+    /* background: radial-gradient(100.18% 488.14% at 50% 50%, rgba(77, 235, 212, 0) 23.23%, rgba(77, 235, 212, 0.365) 85.73%); */
+  }
+  
+  .send-message-form label{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #5E656E;
+  }
+  .book-chat-form label{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #5E656E;
+  }
+  
+  .send-message-form >input[type=text]{
+  padding:3px 15px;
+  font-size: 18px;
+  }
+  .send-message-form >input[type=email]{
+  padding:3px 15px;
+  font-size: 18px;
+  }
+  .book-chat-form >input[type=text]{
+  padding:3px 15px;
+  font-size: 18px;
+  }
+  .book-chat-form >input[type=email]{
+  padding:3px 15px;
+  font-size: 18px;
+  }
+  .send-message-form >input[type=tel]{
+    padding:3px 15px;
+    font-size: 18px;
+  }
+  
+  .right_contactus {
+    width: 50%;
+    /* background: radial-gradient(100.18% 488.14% at 50% 50%, rgba(77, 235, 212, 0) 23.23%, rgba(77, 235, 212, 0.365) 85.73%); */
+  }
+  
+  .form-container {
+    width: 33vw;
+    margin: 0 auto;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    background-color: rgba(255,155,255,0.25); 
+    color: var(--text-color); /* Example text color */
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .tab.active {
+    background-color: var(--primary-color); /* Use custom primary color */
+  }
+  
+  .form-content {
+  border: 2px solid #c8c2c2;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* .send-message-form,
+  .book-chat-form {
+    display: none;
+  } */
+  
+  .send-message-form.active,
+  .book-chat-form.active {
+    display: block;
+  }
+  
+  .send-message-form input,
+  .send-message-form textarea,
+  .book-chat-form input,
+  .book-chat-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Example input border color */
+    border-radius: 5px; /* Rounded corners */
+    /* background: #cdc8c8; */
+  font-size: 16px;
+  }
+  
+  .send-message-form input:focus,
+  .send-message-form textarea:focus,
+  .book-chat-form input:focus,
+  .book-chat-form select:focus {
+    outline: none;
+    border-color: var(--highlight-color); 
+    /* box-shadow: 0 0 5px var(--highlight-color);  */
+  }
+  
+  .send-message-form button,
+  .book-chat-form button {
+    padding: 10px 20px;
+    background-color: #007bff; 
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .send-message-form button:hover,
+  .book-chat-form button:hover {
+    background-color: #343535;
+  }
+  
+  
+  
+  .animstions_c{
+    max-height: 200px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  
+  .tabs>button{
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .btn_book{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn_submit_full{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btn_submit_full>button{
+    width:10vw;
+  }
+  .btn_book>button{
+    width:10vw;
+  }
+  
+  
+  .title-lockup{
+    margin: auto;
+  width: 40vw;
+  }
+  
+  .v2-subtitle{
+  color:var(--text-color)
+  }
+  
+  .ancher a{
+    color:#007bff!important;
+  }
+  
+  
+  @media (max-width:670px){
+    .animations_c{
+      /* width: 100%, !important; */
+      width:100vw;
+      margin: 10px;
+    }  
+    .whole_contactus{
+      flex-direction: column;
+    }
+    .left_contactus{
+      width:100%;
+    }
+    .title-lockup {
+      margin: auto;
+      width: 80vw;
+    }
+  .right_contactus{
+    width:100%;
+  }
+  .form-container{
+    width:70vw;
+  }
+  .btn_submit_full > button {
+    width: 20vw;
+  }
+  .btn_book> button {
+    width: 20vw;
+  }
+  }
+  
+  
+  .toast-custom-style{
+    font-family: 'Aldrich';
+    font-size: 15px;
+    color:white;
+    z-index: 999;
+  }
+  
+  
+  /* .tabs button:hover{
+    background-color: rgba(255,125,255,0.5);
+  } */
+  
+  
+  .animations_c{
+    /* width:50%;
+    margin:auto; */
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  .whole_contactus{
+    overflow-x:hidden ;
+  }

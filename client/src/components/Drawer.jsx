@@ -19,13 +19,12 @@ const Drawer = () => {
         </button>
       </div>
 
-      {/* <!-- drawer component --> */}
-      <form
+      <htmlForm
         action="#"
         method="get"
         id="drawer-example"
-        className="fixed top-0 left-0 z-40 w-full h-screen max-w-xs p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
-        tabindex="-1"
+        className="fixed top-0 left-0 z-40 w-full h-screen max-w-xs p-4 overflow-y-auto transition-transhtmlForm -translate-x-full bg-white dark:bg-gray-800"
+        tabIndex="-1"
         aria-labelledby="drawer-label"
       >
         <h5
@@ -73,7 +72,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="tv"
+                  htmlFor="tv"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   TV, Audio-Video
@@ -90,7 +89,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="dektop"
+                  htmlFor="dektop"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Desktop PC
@@ -106,7 +105,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="gaming"
+                  htmlFor="gaming"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Gaming
@@ -122,7 +121,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="monitors"
+                  htmlFor="monitors"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Monitors
@@ -138,7 +137,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="laptops"
+                  htmlFor="laptops"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Laptops
@@ -155,7 +154,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="console"
+                  htmlFor="console"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Console
@@ -171,7 +170,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="tablet"
+                  htmlFor="tablet"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Tablets
@@ -187,7 +186,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="foto"
+                  htmlFor="foto"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Foto
@@ -203,7 +202,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="fashion"
+                  htmlFor="fashion"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Fashion
@@ -219,7 +218,7 @@ const Drawer = () => {
                 />
 
                 <label
-                  for="books"
+                  htmlFor="books"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Books
@@ -241,7 +240,7 @@ const Drawer = () => {
               <div className="flex items-center justify-between col-span-2 space-x-3">
                 <div className="w-full">
                   <label
-                    for="min-experience-input"
+                    htmlFor="min-experience-input"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     From
@@ -261,7 +260,7 @@ const Drawer = () => {
 
                 <div className="w-full">
                   <label
-                    for="price-to"
+                    htmlFor="price-to"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     To
@@ -295,7 +294,7 @@ const Drawer = () => {
                   name="rating"
                   className="w-4 h-4 bg-gray-100 border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
-                <label for="five-stars" className="flex items-center ml-2">
+                <label htmlFor="five-stars" className="flex items-center ml-2">
                   <svg
                     aria-hidden="true"
                     className="w-5 h-5 text-yellow-400"
@@ -357,7 +356,7 @@ const Drawer = () => {
                   name="rating"
                   className="w-4 h-4 bg-gray-100 border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
-                <label for="four-stars" className="flex items-center ml-2">
+                <label htmlFor="four-stars" className="flex items-center ml-2">
                   <svg
                     aria-hidden="true"
                     className="w-5 h-5 text-yellow-400"
@@ -420,7 +419,7 @@ const Drawer = () => {
                   checked
                   className="w-4 h-4 bg-gray-100 border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
-                <label for="three-stars" className="flex items-center ml-2">
+                <label htmlFor="three-stars" className="flex items-center ml-2">
                   <svg
                     aria-hidden="true"
                     className="w-5 h-5 text-yellow-400"
@@ -482,7 +481,7 @@ const Drawer = () => {
                   name="rating"
                   className="w-4 h-4 bg-gray-100 border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
-                <label for="two-stars" className="flex items-center ml-2">
+                <label htmlFor="two-stars" className="flex items-center ml-2">
                   <svg
                     aria-hidden="true"
                     className="w-5 h-5 text-yellow-400"
@@ -544,7 +543,7 @@ const Drawer = () => {
                   name="rating"
                   className="w-4 h-4 bg-gray-100 border-gray-300 text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
-                <label for="one-star" className="flex items-center ml-2">
+                <label htmlFor="one-star" className="flex items-center ml-2">
                   <svg
                     aria-hidden="true"
                     className="w-5 h-5 text-yellow-400"
@@ -615,7 +614,7 @@ const Drawer = () => {
             </button>
           </div>
         </div>
-      </form>
+      </htmlForm>
     </div>
   );
 };

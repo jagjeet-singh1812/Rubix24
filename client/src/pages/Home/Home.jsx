@@ -1,17 +1,18 @@
-import {useState} from 'react'
+import { useState } from "react";
 // import Slider from '../../components/Slider/Slider'
 import { motion } from "framer-motion";
 import "./Home.css";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import SearchForm from "../../components/SearchForm";
 import TypingEffect from "../../components/Teffect";
 import Bene from "../../components/Benefits/Benefits";
 
-import Countup from "react-countup"
-import ScrollTrigger from "react-scroll-trigger"
+import Countup from "react-countup";
+import ScrollTrigger from "react-scroll-trigger";
+import Drawer from "../../components/Drawer";
 
 const Home = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [cou, setcou] = useState(true);
   const divVariants = {
     initial: {
@@ -42,12 +43,11 @@ const Home = () => {
   };
 
   const scrollToTopAndNavigate = (url) => {
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => {
       navigate(url);
     }, 500);
-  }
+  };
 
   return (
     <div>
@@ -76,38 +76,62 @@ const Home = () => {
               kickstart exciting projects, and achieve your career aspirations
               with personalized mentorship.
             </p>
-            <div className="search_form">
-              <SearchForm />
-            </div>
+            <div className="search_form"><SearchForm /></div>
+        
           </div>
         </motion.div>
       </div>
 
       <h2 className="mb-4  text-center text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-      Transformation by the numbers
-          </h2>
-      <ScrollTrigger onEnter={()=>{setcou(true);console.log("in");}} onExit={()=>setcou(false)}>
-      <section className="bg-white dark:bg-gray-900">
-  <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
-      <dl className="grid max-w-screen-md gap-8 mx-auto text-gray-900 sm:grid-cols-3 dark:text-white">
-          <div className="flex flex-col items-center justify-center">
-              <dt className="mb-2 text-3xl md:text-4xl font-extrabold"><span>{cou && <Countup start={0} end={73} duration={3}></Countup>}</span>
-k+</dt>
-              <dd className="font-light text-gray-500 dark:text-gray-400">Mentors</dd>
+        Transformation by the numbers
+      </h2>
+      <ScrollTrigger
+        onEnter={() => {
+          setcou(true);
+          console.log("in");
+        }}
+        onExit={() => setcou(false)}
+      >
+        <section className="bg-white dark:bg-gray-900">
+          <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+            <dl className="grid max-w-screen-md gap-8 mx-auto text-gray-900 sm:grid-cols-3 dark:text-white">
+              <div className="flex flex-col items-center justify-center">
+                <dt className="mb-2 text-3xl md:text-4xl font-extrabold">
+                  <span>
+                    {cou && <Countup start={0} end={73} duration={3}></Countup>}
+                  </span>
+                  k+
+                </dt>
+                <dd className="font-light text-gray-500 dark:text-gray-400">
+                  Mentors
+                </dd>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <dt className="mb-2 text-3xl md:text-4xl font-extrabold">
+                  <span>
+                    {cou && <Countup start={0} end={34} duration={3}></Countup>}
+                  </span>
+                  k+
+                </dt>
+                <dd className="font-light text-gray-500 dark:text-gray-400">
+                  Mentee
+                </dd>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <dt className="mb-2 text-3xl md:text-4xl font-extrabold">
+                  <span>
+                    {cou && <Countup start={0} end={70} duration={3}></Countup>}
+                  </span>
+                  k+
+                </dt>
+                <dd className="font-light text-gray-500 dark:text-gray-400">
+                  organizations
+                </dd>
+              </div>
+            </dl>
           </div>
-          <div className="flex flex-col items-center justify-center">
-              <dt className="mb-2 text-3xl md:text-4xl font-extrabold"><span>{cou && <Countup start={0} end={34} duration={3}></Countup>}</span>k+</dt>
-              <dd className="font-light text-gray-500 dark:text-gray-400">Mentee</dd>
-          </div>
-          <div className="flex flex-col items-center justify-center">
-              <dt className="mb-2 text-3xl md:text-4xl font-extrabold"><span>{cou && <Countup start={0} end={70} duration={3}></Countup>}</span>k+</dt>
-              <dd className="font-light text-gray-500 dark:text-gray-400">organizations</dd>
-          </div>
-      </dl>
-  </div>
-</section>
-</ScrollTrigger>
-
+        </section>
+      </ScrollTrigger>
 
       <section className="bg-white dark:bg-gray-900">
         <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
@@ -221,18 +245,19 @@ k+</dt>
       <div className="btn_sections">
         <button
           type="button"
-          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
-          onClick={()=> scrollToTopAndNavigate("find_mentor")}
+          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
+          onClick={() => scrollToTopAndNavigate("find_mentor")}
         >
           Get a Mentor
         </button>
         <button
           type="button"
-          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
-        onClick={()=> scrollToTopAndNavigate("mentor_page")}
+          className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
+         onClick={() => scrollToTopAndNavigate("mentor_page")}
         >
           Become a Mentor
         </button>
+
       </div>
 
       <Bene title="Why Choose us ?" />

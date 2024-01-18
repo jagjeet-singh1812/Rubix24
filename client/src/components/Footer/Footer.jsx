@@ -9,7 +9,8 @@ const Footer = () => {
   return (
     <>
       <div className="color_footer" >
-        <img src={wave} alt="Waves" className="w-full" style={{ marginbottom:0}}/>
+        <img src={wave} alt="Waves" className="w-full" style={{position: "relative",
+  top: "10px"}}/>
         <footer
           className="p-4 bg-blue sm:p-6 dark:bg-gray-800 "
           style={{ margintop: -2 ,backgroundColor: "#000d25", color: "#ffffff" }}
