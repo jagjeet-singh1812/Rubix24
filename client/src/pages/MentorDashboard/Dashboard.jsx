@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const getMentor = async () => {
-      const id = "65a943781824257f9ec7b9bd"; // this should be from local storage
+      const id = ""; // this should be from local storage 65a943781824257f9ec7b9bd
       try {
         const res = await axios.get(`${URI}/api/getSingleMentor/${id}`);
         if (res?.status === 200) {
