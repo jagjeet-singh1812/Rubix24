@@ -52,12 +52,15 @@ const mentorSchema = new mongoose.Schema({
   },
   reviews: {
     type: [String], // Array of review strings
+    default: [],
   },
   slots: {
     type: [Date], // Array of time slots
+    default: [],
   },
   subscribed: {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Mentee" }], // Array of Mentee IDs
+    default: [],
   },
   premium_price: {
     type: Number,

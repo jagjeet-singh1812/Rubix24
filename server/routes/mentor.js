@@ -85,4 +85,38 @@ router.post('/auth/login', async (req, res) => {
   }
 })
 
+router.get("/getMentor/:id", async (req, res) => {
+  try {
+    const mentor = await Mentor.findById(req.params.id);
+    return res.status(200).json({ mentor });
+  } catch (error) {
+    return res.status(500).json({ error: String(error) });
+  }
+});
+
+router.get("/getMentors", async (req, res) => {
+  try {
+    const { skills, lite_price_min, lite_price_max, job_title, is_verified } = req.query;
+
+    // Building the filter object based on provided query parameters
+    const filter = {};
+    if (skills) filter.skills = { $in: skills.split(',') };
+    if (lite_price_min !== undefined) filter.lite_price = { $gte: parseInt(lite_price_min) };
+    if (lite_price_max !== undefined) {
+      if (!filter.lite_price) filter.lite_price = {};
+      filter.lite_price.$lte = parseInt(lite_price_max);
+    }
+    if (job_title) filter.job_title = job_title;
+    if (is_verified !== undefined) filter.is_verified = Boolean(is_verified);
+
+    // Query the mentors collection with the constructed filter
+    const mentors = await Mentor.find(filter);
+
+    res.json(mentors);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;
