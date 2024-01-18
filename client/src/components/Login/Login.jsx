@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/react.svg";
-
+import Navigation from "../../components/Nav/Nav";
+import Footer from "../../components/Footer/Footer"
 import backend from "../../Api";
 const Login_form = () => {
+  
   const [activeTab, setActiveTab] = useState("mentor");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,6 +47,7 @@ else{
 
   return (
     <div>
+      <Navigation/>
       <section className="bg-white dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <a
@@ -164,6 +167,7 @@ else{
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

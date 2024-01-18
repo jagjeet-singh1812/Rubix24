@@ -3,7 +3,6 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import HomeScreen from "./pages/Home";
 import MentorPage from "./pages/MentorPage";
 import QA from "./pages/QandA/QA";
-
 import Navigation from "./components/Nav/Nav";
 import Home from "./pages/Home/Home";
 
@@ -22,12 +21,31 @@ import Login from "./components/Login/Login";
 import Login_form from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 // import Login from "./components/Login/Login";
-import Profilementor from "./pages/MentorDashboard/Dashboard"
+import Profilementor from "./pages/MentorDashboard/Dashboard";
 
 function App() {
+//   const navigate=useNavigate();
+// const isMentorPageOrDashboard = () => {
+//     const currentPath = window.location.pathname;
+//     console.log(currentPath);
+//     return currentPath.includes('/mentorform') || currentPath.includes('/dashboard');
+//   };
+// const [x,setx]=useState(true);
+//   useEffect(() => {
+//     const shouldRenderNavAndFooter = isMentorPageOrDashboard();
+
+//     if (shouldRenderNavAndFooter) {
+//       // For example, navigate to another page
+//     setx(false);
+//     }
+//     else{
+//       setx(true);
+//     }
+//   }, [navigate]); 
+
   return (
     <BrowserRouter>
-    {/* <Navigation/> */}
+    {/* {x && <Navigation />} */}
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/find_mentor" element={<FindMentor/>}></Route>

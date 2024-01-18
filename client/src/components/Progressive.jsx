@@ -87,6 +87,7 @@
 import user from "../assets/profile_img.jpg";
 
 const Progressive = () => {
+  const skills = ["JavaScript", "React", "Node.js", "HTML", "CSS", "MongoDB"];
   return (
     <div>
       <div className="bg-white-100 dark:bg-gray-800 py-8">
@@ -104,7 +105,7 @@ const Progressive = () => {
             </div>
             <div className="md:flex-1 px-4">
               <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
-                Mentor's Name{" "}
+                Mentor's Name
               </h2>
               <p className="text-gray-600 dark:text-gray-300 text-base mb-4">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
@@ -158,9 +159,25 @@ const Progressive = () => {
           </div>
         </div>
       </div>
+
+      <div className="mt-8 text-center">
+      <span className="mb-5 text-3xl font-semibold text-black md:text-center md:text-2xl">
+        Skills:
+      </span>
+      <div className="flex justify-center gap-4">
+        {skills.map((skill, index) => (
+          <button
+            key={index}
+            className="shadow-pink-600/30 inline-flex items-center rounded-full bg-pink-500 px-6 py-3 text-xl font-light text-white shadow-md transition hover:translate-y-1 hover:scale-105 hover:bg-pink-600 hover:shadow-lg"
+          >
+            {skill}
+          </button>
+        ))}
+      </div>
+    </div>
+
     </div>
   );
 };
 
 export default Progressive;
-

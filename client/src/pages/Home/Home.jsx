@@ -10,7 +10,8 @@ import Bene from "../../components/Benefits/Benefits";
 import Countup from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import Drawer from "../../components/Drawer";
-
+import Navigation from "../../components/Nav/Nav";
+import Footer from "../../components/Footer/Footer"
 const Home = () => {
   const navigate = useNavigate();
   const [cou, setcou] = useState(true);
@@ -51,6 +52,7 @@ const Home = () => {
 
   return (
     <div>
+      <Navigation/>
       <div className="temp"></div>
       {/* <Slider/> */}
       <div className="main_divv">
@@ -261,7 +263,9 @@ const Home = () => {
       </div>
 
       <Bene title="Why Choose us ?" />
+      <Footer/>
     </div>
+
   );
 };
 
