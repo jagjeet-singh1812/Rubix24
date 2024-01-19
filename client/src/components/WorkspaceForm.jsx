@@ -1,9 +1,21 @@
 import React, { useContext } from "react";
 import FormContext from "../store/form-context";
 import classes from "./css/Form.module.css";
+import axios from "axios";
+import backend from "../Api";
+import { useEffect } from "react";
 
 function WorkspaceForm() {
   const { setFormData, formData, setValidation } = useContext(FormContext);
+  const [fskills, setFskills] = React.useState([]);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      const response = await axios.get(`${backend}/common/getAllSkills`);
+      setFskills(response.data.skills);
+    };
+    fetchSkills();
+  }, []);
 
   const workEmailHandler = (event) => {
     setFormData((prevData) => ({
@@ -96,15 +108,15 @@ function WorkspaceForm() {
             multiple
             onChange={skillsHandler}
             value={formData.skills}
+            style={{height: "100px"}}
           >
             {/* Populate options based on your skills data */}
             {/* For example: */}
-            <option value="Skill1">Skill 1</option>
-            <option value="Skill2">Skill 2</option>
-            <option value="Skill1">Skill 1</option>
-            <option value="Skill2">Skill 2</option>
-            <option value="Skill1">Skill 1</option>
-            <option value="Skill2">Skill 2</option>
+            {fskills && fskills.map((skill) => (
+              <option key={skill} value={skill}>
+                {skill}
+              </option>
+            ))}
             {/* Add more skills options as needed */}
           </select>
           <div className={classes.selectedSkills}>

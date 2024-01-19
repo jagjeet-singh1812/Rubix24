@@ -33,6 +33,14 @@ const FindMentor = () => {
           Discover your ideal mentor from our curated selection of the filter and excel in your feild.
           </p>
         </div>
+        {/* button */}
+         <button
+            type="button"
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
+            onClick={() => window.location.href="/find_mentor"}
+          >
+            Find All Mentors
+          </button>
       <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
         {mentors.map((mentor) => (
         <div key={mentor._id} className="items-center bg-gray-50 rounded-lg shadow-md sm:flex dark:bg-gray-800 dark:border-gray-700 transition duration-300 hover:border-transparent hover:shadow-lg ">
@@ -124,7 +132,7 @@ const FindMentor = () => {
                 type="button"
                 className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 bg-blue-700 hover:bg-blue-800 text-white "
               >
-                Enroll now&nbsp;@{mentor.lite_price}
+                Compatibitly Score&nbsp;@{mentor.personality_score}
 
               </button>
                   </li>

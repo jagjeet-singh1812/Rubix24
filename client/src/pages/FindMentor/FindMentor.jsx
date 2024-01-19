@@ -12,7 +12,8 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
-
+import Navigation from "../../components/Nav/Nav";
+import Footer from "../../components/Footer/Footer"
 const FindMentor = () => {
   const navigate = useNavigate();
 
@@ -164,8 +165,6 @@ const FindMentor = () => {
             Apply Filters
           </button>
         </div>
-
-
 
       <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
        {mentors.map((mentor) => (

@@ -5,8 +5,9 @@ import Logo from "../../assets/react.svg";
 import Navigation from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer"
 import backend from "../../Api";
+import {useNavigate} from "react-router-dom";
 const Login_form = () => {
-  
+  const navigate=useNavigate();
   const [activeTab, setActiveTab] = useState("mentor");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +27,7 @@ const Login_form = () => {
       });
       console.log(response);
       localStorage.setItem("key",response.data.token);
+      navigate("/dash");
     } catch (error) {
       console.error("Authentication failed:", error.message);
     }
@@ -40,6 +42,7 @@ else{
   
         console.log(response);
         localStorage.setItem("key",response.data.token);
+        navigate("/");
       } catch (error) {
         console.error("Authentication failed:", error.message);
       }
@@ -159,6 +162,12 @@ else{
                   <a
                     href="#"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    onClick={() => {
+                      if(activeTab=="mentor")
+                        navigate("/mentorform");
+                      else
+                        navigate("/menteeform");
+                    }}
                   >
                     Sign up
                   </a>

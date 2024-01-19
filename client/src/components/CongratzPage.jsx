@@ -4,7 +4,7 @@ import FormContext from "../store/form-context";
 import classes from "./css/Form.module.css";
 import { NavLink, useNavigate } from "react-router-dom"; // Import NavLink from react-router-dom
 import axios from "axios";
-
+import backend from "../Api";
 function CongratzPage() {
   const { formData } = useContext(FormContext);
 
@@ -50,7 +50,7 @@ function CongratzPage() {
       });
       console.log(formDataToSend.get("coverImage"));
       const response = await axios.post(
-        "http://localhost:8090/api/auth/register",
+        `${backend}/api/auth/register`,
         formDataToSend,
         {
           headers: {

@@ -76,13 +76,14 @@ router.get("/getLinkedin", async(req, res)=>{
                 education.push(component.components.entityComponent.titleV2.text.text)
             })
         else
-            education = "Not Available" 
+            education = []
 
         let work_experience = []
         // work_experience.push(buttom_data.included[5].topComponents[1].components.fixedListComponent.components[0].components.entityComponent.subtitle.text)
-        buttom_data.included[5].topComponents[1].components.fixedListComponent.components.forEach((component)=>{
-            work_experience.push(component.components.entityComponent.subtitle.text)
-        })  
+        if(buttom_data.included[11].topComponents[1].components)
+            buttom_data.included[5].topComponents[1].components.fixedListComponent.components.forEach((component)=>{
+                work_experience.push(component.components.entityComponent.subtitle.text)
+            })
         // console.log(headline, education, work_experience)
 
         res.json({headline, education, work_experience});
