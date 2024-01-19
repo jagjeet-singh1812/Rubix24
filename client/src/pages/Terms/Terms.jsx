@@ -3,17 +3,22 @@ import "./Terms.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import URI from "../../URI";
 import axios from "axios";
+import {jwtDecode} from "jwt-decode";
 
 const Terms = () => {
   const handleSubmit = async () => {
     try {
+      const key = localStorage.getItem("key");
+      const decoded = jwtDecode(key);
+      const id = decoded.id;
+      console.log(id);
       const response = await axios.post(
         `${URI}/api/verify`,
         {},
         {
           headers: {
             //
-            Authorization: "65a971a591f6ae49b06bbd59",
+            Authorization: id,
             "Content-Type": "application/json",
           },
         }

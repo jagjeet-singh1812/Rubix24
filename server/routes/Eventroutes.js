@@ -7,6 +7,7 @@ const Mentor = require("../models/Mentor");
 router.post("/api/event", async (req, res) => {
   try {
     const { eventName, topicName, dateEvent, startTime, endTime } = req.body;
+    console.log(req.body);
     const organizerId = req.headers.authorization; // Assuming this is the Mentor's ID
 
     // Check if the organizer (Mentor) exists

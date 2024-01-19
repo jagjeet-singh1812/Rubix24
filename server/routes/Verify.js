@@ -31,6 +31,8 @@ router.post("/api/verify", async (req, res) => {
     const id = req.headers.authorization;
     console.log(id);
     const mentor_obj = await Mentor.findById(id);
+    if(!mentor_obj)
+      return res.status(404).send({msg:"Mentor not found"});
     const { name, work_email, is_verified } = mentor_obj;
     console.log(mentor_obj);
     if (!work_email) {
@@ -54,6 +56,7 @@ router.post("/api/verify", async (req, res) => {
 
     res.status(200).send({ msg: "Sent" });
   } catch (error) {
+    console.log(error);
     return res.status(500).send({ msg: error });
   }
 });

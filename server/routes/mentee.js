@@ -3,15 +3,27 @@ const Mentee = require('../models/Mentee');
 const Mentor = require('../models/Mentor');
 const jwt = require('jsonwebtoken');
 const getPersonality = require('../utils/getPersonality');
+const multer = require("multer")
 
-router.post('/register', async (req, res) => {
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    return cb(null, `./uploads`);
+  },
+  filename: function (req, file, cb) {
+    const fileName = `${Date.now()}-${file.originalname}`;
+    return cb(null, fileName);
+  },
+});
+
+const upload = multer({ storage: storage });
+router.post('/register', upload.single("profile_pic"), async (req, res) => {
     try {
-        const { name, email, password, profile_pic, personality_score } = req.body;
+        const { name, email, password, personality_score } = req.body;
         const newMentee = new Mentee({
             name,
             email,
             password,
-            profile_pic,
+            profile_pic: req.file.filename,
             personality_score
         });
         await newMentee.save();

@@ -60,7 +60,7 @@ function CongratzPage() {
       );
       if (response?.status === 201) {
         alert("Succesfull");
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);

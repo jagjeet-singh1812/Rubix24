@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import {jwtDecode} from "jwt-decode";
+import backend from "../../Api";
 
 const Event = () => {
   const [formData, setFormData] = useState({
@@ -30,20 +32,25 @@ const Event = () => {
       console.log(data.get("startTime"));
       console.log(data.get("endTime"));
       console.log(data.get("dateEvent"));
-
+      const key = localStorage.getItem("key");
+      const decoded = jwtDecode(key);
+      const id = decoded.id;
+      // console.log(id);
+      console.log(formData)
       // Replace 'https://your-backend-endpoint.com/api/create-event' with your actual backend endpoint
-      //   const response = await axios.post(
-      //     "https://your-backend-endpoint.com/api/create-event",
-      //     data,
-      //     {
-      //       headers: {
-      //         "Content-Type": "multipart/form-data",
-      //       },
-      //     }
-      //   );
+        const response = await axios.post(
+          `${backend}/api/event`,
+          formData,
+          {
+            headers: {
+              "Authorization": id
+            },
+          }
+        );
 
       //   // Handle the response from the backend, e.g., show a success message
-      //   console.log(response.data);
+      console.log(response.data);
+      alert("Event created successfully");
     } catch (error) {
       // Handle errors
       console.error("Error sending form data:", error);

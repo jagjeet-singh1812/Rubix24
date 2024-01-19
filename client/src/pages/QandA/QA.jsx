@@ -42,7 +42,7 @@ const QA = () => {
     // alert("Form successfully submitted"
     const formdata=new FormData();
     formdata.append("personality_score",totalScore);
-    const data=await axios.put(`${URI}/doit/api/mentor-persanality/65a971a591f6ae49b06bbd59`,formdata)   //id = mentor_id
+    const data=await axios.put(`${URI}/api/mentor-persanality/65a971a591f6ae49b06bbd59`,formdata)   //id = mentor_id
     console.log(data.response);
     console.log(formdata.get("personality_score"));
 }

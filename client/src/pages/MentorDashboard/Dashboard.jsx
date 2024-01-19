@@ -3,13 +3,17 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import "./Dashboard.css";
 import axios from "axios";
 import URI from "../../URI";
+import {jwtDecode} from 'jwt-decode';
 
 const Dashboard = () => {
   const [obj, setMentorData] = useState(null);
 
   useEffect(() => {
     const getMentor = async () => {
-      const id = "65a971a591f6ae49b06bbd59"; // this should be from local storage
+      const key = localStorage.getItem("key");
+      const decoded = jwtDecode(key);
+      const id = decoded.id;
+      console.log(id);
       try {
         const res = await axios.get(`${URI}/api/getSingleMentor/${id}`);
         if (res?.status === 200) {
@@ -32,7 +36,7 @@ const Dashboard = () => {
               <div className="profile-card js-profile-card">
                 <div className="profile-card__img">
                   <img
-                    src={`${URI}/uploads/${obj?.coverImage}`}
+                    src={`${URI}/${obj?.coverImage}`}
                     alt="profile card"
                   />
                 </div>
